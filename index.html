@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon budget</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="entete">
+    <h1>Mon budget</h1>
+    <p class="sous-titre">Suivez vos revenus et vos dépenses</p>
+  </header>
+
+  <main class="grille">
+    <section class="carte carte-solde" aria-labelledby="titre-solde">
+      <h2 id="titre-solde">Solde actuel</h2>
+      <p id="solde" class="solde">0,00 €</p>
+      <div class="totaux">
+        <div><span class="etiquette">Revenus</span><strong id="total-revenus" class="positif">0,00 €</strong></div>
+        <div><span class="etiquette">Dépenses</span><strong id="total-depenses" class="negatif">0,00 €</strong></div>
+      </div>
+    </section>
+
+    <section class="carte carte-formulaire" aria-labelledby="titre-form">
+      <h2 id="titre-form">Nouvelle transaction</h2>
+      <form id="formulaire" novalidate>
+        <div class="bascule" role="radiogroup" aria-label="Type de transaction">
+          <label><input type="radio" name="type" value="depense" checked><span>Dépense</span></label>
+          <label><input type="radio" name="type" value="revenu"><span>Revenu</span></label>
+        </div>
+        <label class="champ">Montant (€)
+          <input type="number" id="montant" min="0.01" step="0.01" inputmode="decimal" placeholder="0,00" required>
+        </label>
+        <label class="champ">Catégorie
+          <select id="categorie" required></select>
+        </label>
+        <label class="champ">Date
+          <input type="date" id="date" required>
+        </label>
+        <label class="champ">Description
+          <input type="text" id="description" maxlength="80" placeholder="Ex. : courses du samedi">
+        </label>
+        <p id="erreur" class="erreur" role="alert" hidden></p>
+        <div class="actions">
+          <button type="submit" class="btn btn-principal" id="btn-valider">Ajouter</button>
+          <button type="button" class="btn" id="btn-annuler" hidden>Annuler</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="carte carte-graphique" aria-labelledby="titre-graphique">
+      <h2 id="titre-graphique">Répartition des dépenses</h2>
+      <div class="graphique">
+        <div id="donut" class="donut"></div>
+        <ul id="legende" class="legende"></ul>
+      </div>
+    </section>
+
+    <section class="carte carte-historique" aria-labelledby="titre-historique">
+      <h2 id="titre-historique">Historique</h2>
+      <div class="filtres">
+        <select id="filtre-type" aria-label="Filtrer par type">
+          <option value="">Tous les types</option>
+          <option value="depense">Dépenses</option>
+          <option value="revenu">Revenus</option>
+        </select>
+        <select id="filtre-categorie" aria-label="Filtrer par catégorie"></select>
+        <input type="date" id="filtre-debut" aria-label="Date de début">
+        <input type="date" id="filtre-fin" aria-label="Date de fin">
+        <input type="search" id="filtre-texte" placeholder="Rechercher…" aria-label="Rechercher dans la description">
+        <button type="button" class="btn" id="btn-reinitialiser">Réinitialiser</button>
+      </div>
+      <ul id="liste" class="liste"></ul>
+      <p id="resume-filtre" class="resume-filtre"></p>
+    </section>
+  </main>
+</body>
+</html>
