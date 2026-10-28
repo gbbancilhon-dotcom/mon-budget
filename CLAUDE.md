@@ -12,7 +12,7 @@ Application web de gestion de budget personnel, en français, sans backend.
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Structure : carte solde, formulaire, graphique, historique avec filtres. `app.js` chargé avec `defer`. |
+| `index.html` | Structure : carte solde, formulaire, graphique, historique avec filtres. `app.js` chargé avec `defer`. Balises SEO de base (description, Open Graph, `theme-color`) et favicon SVG intégré en data URI (aucune image externe). Pas de balise `canonical`/`og:url` tant que l'URL publique n'est pas connue. |
 | `style.css` | Design : variables CSS dans `:root`, grille responsive (1 colonne mobile, 2 colonnes dès 800 px), mode sombre via `prefers-color-scheme`. |
 | `app.js` | Toute la logique (voir architecture). |
 | `.claude/launch.json` | Config de prévisualisation : `python -m http.server 5173` sur 127.0.0.1 (le port 8765 est refusé par Windows). Optionnel. |
